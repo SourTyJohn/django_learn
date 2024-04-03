@@ -3,7 +3,8 @@ from django import forms
 
 class RegisterForm(forms.Form):
     user_name = forms.CharField(label='Имя пользователя', max_length=64)
-    password = forms.CharField(label='Пароль', max_length=64)
+    # password = forms.CharField(label='Пароль', max_length=64)
+    password = forms.CharField(label='Пароль', max_length=64, widget=forms.PasswordInput())
 
 
 class NewBlogForm(forms.Form):
