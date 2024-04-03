@@ -1,6 +1,32 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpRequest
+from . import forms
 
 
-def index(request):
-    return HttpResponse('o_o')
+def index(request: HttpRequest):
+    return render(request, "index.html")
+
+
+def reg_page(request: HttpRequest):
+
+    # -- GET --
+    if request.method == 'GET':
+        reg_form = forms.RegisterForm()
+        return render(request, 'register_page.html', {'form': reg_form})
+
+    # -- POST --
+    reg_form = forms.RegisterForm(request.POST)
+    if reg_form.is_valid():
+        print(reg_form.cleaned_data['user_name'], reg_form.cleaned_data['password'])
+        return redirect( index )
+
+    return redirect( reg_page )
+
+
+def blog_page(request: HttpRequest):
+    # -- GET --
+    if request.method == 'GET':
+        blog_form = forms.NewBlogForm
+        return render(request, 'blog_page.html', {'form': blog_form})
+
+    # -- POST --

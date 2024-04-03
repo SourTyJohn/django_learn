@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <form action="/reg_page" method="post">
+		{% csrf_token %}
+    	{{ form }}
+		<p><input type="submit"></p>
+    </form>
+
+</body>
+</html>
