@@ -1,0 +1,35 @@
+In Terminal:
+    django-admin startproject <project_name>
+    cd <project_name>
+    python manage.py startapp <app_name>
+
+
+<app_name>/urls.py
+    from django.urls import path
+    from . import views
+    urlpatterns = [
+        path("", views.index, name='index'),
+    ]
+
+
+<project_name>/urls.py
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('<app_name>.urls')),
+]
+
+
+
+<project_name>/settings.py
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    '<app_name>'
+]
+
+In Terminal. To launch website
+    python manage.py runserver
