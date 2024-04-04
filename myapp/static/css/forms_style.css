@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.formFullWrapper {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 600px;
+    padding: 8px;
+    background-color: #f0e0d8;
+    border-radius: 8px;
+}
+
+.formFieldWrapper {
+    display: flex;
+
+    font-size: 20pt;
+    background-color: #fad2b4;
+    padding: 4px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border-radius: 8px;
+}
+
+.formInputButton {}
