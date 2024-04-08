@@ -14,3 +14,18 @@ class User(models.Model):
 
     def __str__(self):
         return f'<USER {self.email}>'
+
+
+class BlogMessage(models.Model):
+    # hidden
+    sender = models.ForeignKey('User', on_delete=models.PROTECT)
+    likes = models.IntegerField()
+    dislikes = models.IntegerField()
+
+    # form
+    text = models.CharField(
+        verbose_name='Содержание', max_length=128
+    )
+
+    def __str__(self):
+        return f'<BLOG {self.sender}>'

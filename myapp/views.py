@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.views.decorators.http import require_GET
 from django.http import HttpRequest
 from . import forms
 
@@ -7,12 +8,13 @@ def index(request: HttpRequest):
     return render(request, "index.html")
 
 
-def reg_page(request: HttpRequest):
+def register(request: HttpRequest):
 
     # -- GET --
     if request.method == 'GET':
         reg_form = forms.UserForm()
-        return render(request, 'register_page.html', {'form': reg_form})
+        context = {'form': reg_form}
+        return render(request, 'register_page.html', context)
 
     # -- POST --
     reg_form = forms.UserForm(request.POST)
@@ -20,13 +22,26 @@ def reg_page(request: HttpRequest):
         reg_form.save()
         return redirect( index )
 
-    return redirect( reg_page )
+    return redirect( register )
 
 
-def blog_page(request: HttpRequest):
+def add_blog(request: HttpRequest):
     # -- GET --
     if request.method == 'GET':
-        blog_form = forms.NewBlogForm
-        return render(request, 'blog_page.html', {'form': blog_form})
+        blog_form = forms.BlogForm()
+        context = {'form': blog_form}
+        return render(request, 'add_blog.html', context)
 
     # -- POST --
+    blog_form = forms.BlogForm(request.POST)
+    if blog_form.is_valid():
+        blog_form.save()
+        return redirect( index )
+
+    return redirect( add_blog )
+
+
+@require_GET
+def blogs(request: HttpRequest):
+    context = {}
+    return render(request, 'blogs_page.html', context)

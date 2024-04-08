@@ -11,5 +11,11 @@ class UserForm(forms.ModelForm):
         }
 
 
-class NewBlogForm(forms.Form):
-    message = forms.CharField(widget=forms.Textarea)
+class BlogForm(forms.ModelForm):
+    class Meta:
+        model = models.BlogMessage
+        fields = ('text', )
+        widgets = {
+            'text': forms.Textarea()
+        }
+
