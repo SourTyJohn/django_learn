@@ -1,10 +1,14 @@
 from django import forms
+from . import models
 
 
-class RegisterForm(forms.Form):
-    user_name = forms.CharField(label='Имя пользователя', max_length=64)
-    # password = forms.CharField(label='Пароль', max_length=64)
-    password = forms.CharField(label='Пароль', max_length=64, widget=forms.PasswordInput())
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = models.User
+        fields = '__all__'
+        widgets = {
+            'password': forms.PasswordInput()
+        }
 
 
 class NewBlogForm(forms.Form):

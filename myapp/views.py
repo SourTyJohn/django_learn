@@ -11,13 +11,13 @@ def reg_page(request: HttpRequest):
 
     # -- GET --
     if request.method == 'GET':
-        reg_form = forms.RegisterForm()
+        reg_form = forms.UserForm()
         return render(request, 'register_page.html', {'form': reg_form})
 
     # -- POST --
-    reg_form = forms.RegisterForm(request.POST)
+    reg_form = forms.UserForm(request.POST)
     if reg_form.is_valid():
-        print(reg_form.cleaned_data['user_name'], reg_form.cleaned_data['password'])
+        reg_form.save()
         return redirect( index )
 
     return redirect( reg_page )

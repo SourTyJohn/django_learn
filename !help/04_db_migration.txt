@@ -1,0 +1,7 @@
+Чтобы подттянуть базы данных, необходимо сделать миграции
+
+    python manage.py makemigrations
+    python manage.py migrate
+
+
+В папке migration должен появится файл миграции
