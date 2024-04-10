@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.decorators.http import require_GET
 from django.http import HttpRequest
 from . import forms
+from . import models
 
 
 def index(request: HttpRequest):
@@ -33,7 +34,7 @@ def add_blog(request: HttpRequest):
         return render(request, 'add_blog.html', context)
 
     # -- POST --
-    blog_form = forms.BlogForm(request.POST)
+    blog_form = forms.BlogForm(request.POST, sender=None)
     if blog_form.is_valid():
         blog_form.save()
         return redirect( index )

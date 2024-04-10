@@ -66,10 +66,11 @@ WSGI_APPLICATION = 'djangopr.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'global',
-        'USER': 'admin',
+        'NAME': 'forum',
+        'USER': 'postgres',
         'PASSWORD': 'sudo',
-        'HOST': 'localhost'
+        'HOST': 'localhost',
+        'PORT': 5432,
     }
 }
 

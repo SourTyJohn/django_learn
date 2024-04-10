@@ -21,6 +21,7 @@ class BlogMessage(models.Model):
     sender = models.ForeignKey('User', on_delete=models.PROTECT)
     likes = models.IntegerField()
     dislikes = models.IntegerField()
+    create_time = models.DateTimeField(auto_now_add=True)
 
     # form
     text = models.CharField(

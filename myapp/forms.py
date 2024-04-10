@@ -19,3 +19,12 @@ class BlogForm(forms.ModelForm):
             'text': forms.Textarea()
         }
 
+    def __init__(self, *args, **kwargs):
+        attrs = {
+            'sender': kwargs.pop('sender', None),
+            'likes': kwargs.pop('likes', 0),
+            'dislikes': kwargs.pop('dislikes', 0)
+        }
+        super().__init__(*args, **kwargs)
+        for key, value in attrs.items():
+            setattr(self.instance, key, value)
