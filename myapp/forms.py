@@ -2,12 +2,17 @@ from django import forms
 from . import models
 
 
-class UserForm(forms.ModelForm):
+class UserFormRegister(forms.ModelForm):
     class Meta:
         model = models.User
-        fields = '__all__'
+        fields = ('username', 'email', 'password')
         widgets = {
             'password': forms.PasswordInput()
+        }
+        labels = {
+            'username': 'Имя Пользователя',
+            'email': 'Электронная Почта',
+            'password': 'Пароль'
         }
 
 

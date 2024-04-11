@@ -1,0 +1,17 @@
+В таблице django_migrations история миграций, возможно нужно почистить
+
+
+settings.py
+
+    # User Model  - установить собственную модель пользователя
+    AUTH_USER_MODEL = 'myapp.User'
+
+
+Делаем свою модель наследуя от встроенной
+
+    from django.db import models
+    from django.contrib.auth.models import AbstractUser
+
+    class User(AbstractUser):
+        pass
+

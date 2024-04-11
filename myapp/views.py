@@ -13,12 +13,14 @@ def register(request: HttpRequest):
 
     # -- GET --
     if request.method == 'GET':
-        reg_form = forms.UserForm()
+        reg_form = forms.UserFormRegister()
         context = {'form': reg_form}
         return render(request, 'register_page.html', context)
 
     # -- POST --
-    reg_form = forms.UserForm(request.POST)
+    reg_form = forms.UserFormRegister(request.POST)
+    queryset = models.User.objects.all()
+
     if reg_form.is_valid():
         reg_form.save()
         return redirect( index )
