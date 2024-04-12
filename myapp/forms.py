@@ -16,6 +16,18 @@ class UserFormRegister(forms.ModelForm):
         }
 
 
+class UserFormLogin(forms.Form):
+    username = forms.CharField(
+        max_length=models.User._meta.get_field('username').max_length,
+        label=models.User._meta.get_field('username').verbose_name
+    )
+    password = forms.CharField(
+        max_length=models.User._meta.get_field('password').max_length,
+        label=models.User._meta.get_field('password').verbose_name,
+        widget=forms.PasswordInput
+    )
+
+
 class BlogForm(forms.ModelForm):
     class Meta:
         model = models.BlogMessage

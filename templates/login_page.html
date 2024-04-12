@@ -7,8 +7,17 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/forms_style.css'%}"/>
 </head>
 <body>
+    {% if messages %}
+    <div class="" role="alert">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+    </div>
+    {% endif %}
+    <p></p>
+
     <div class="formFullWrapper">
-        <form action="/registration" method="post"> {% csrf_token %}
+        <form action="/login" method="post"> {% csrf_token %}
             {% for field in form %}
             <div class="formFieldWrapper">
                 {{ field.errors }}
