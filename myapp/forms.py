@@ -19,11 +19,11 @@ class UserFormRegister(forms.ModelForm):
 class UserFormLogin(forms.Form):
     username = forms.CharField(
         max_length=models.User._meta.get_field('username').max_length,
-        label=models.User._meta.get_field('username').verbose_name
+        label=UserFormRegister.Meta.labels['username']
     )
     password = forms.CharField(
         max_length=models.User._meta.get_field('password').max_length,
-        label=models.User._meta.get_field('password').verbose_name,
+        label=UserFormRegister.Meta.labels['password'],
         widget=forms.PasswordInput
     )
 

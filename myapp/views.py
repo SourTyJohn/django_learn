@@ -8,15 +8,16 @@ from . import models
 
 
 def index(request: HttpRequest):
-    return render(request, "index.html")
+    template_kwargs = { 'messages': models.BlogMessage.get_all_posts() }
+    return render(request, "index.html", template_kwargs)
 
 
 def register(request: HttpRequest):
 
     # -- GET --
     if request.method == 'GET':
-        from_kwargs = { 'form': forms.UserFormRegister() }
-        return render(request, 'register_page.html', from_kwargs)
+        template_kwargs = { 'form': forms.UserFormRegister() }
+        return render(request, 'register_page.html', template_kwargs)
 
     # -- POST --
     reg_form = forms.UserFormRegister(request.POST)
@@ -70,10 +71,13 @@ def add_blog(request: HttpRequest):
     # -- GET --
     if request.method == 'GET':
         blog_form = forms.BlogForm()
-        from_kwargs = {'form': blog_form}
+        from_kwargs = {'form': blog_form, 'user': request.user}
         return render(request, 'add_blog.html', from_kwargs)
 
     # -- POST --
+    if request.user is None:
+        return redirect( add_blog )
+
     blog_form = forms.BlogForm(request.POST, sender=request.user)
     if blog_form.is_valid():
         blog_form.save()

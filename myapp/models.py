@@ -20,3 +20,7 @@ class BlogMessage(models.Model):
 
     def __str__(self):
         return f'<BLOG {self.sender}>'
+
+    @classmethod
+    def get_all_posts(cls):
+        return list(cls.objects.all())

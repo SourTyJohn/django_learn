@@ -95,6 +95,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # User Model
+LOGOUT_REDIRECT_URL = "index"
+
 AUTH_USER_MODEL = 'myapp.User'
 
 # Authentication backends

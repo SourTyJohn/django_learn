@@ -8,20 +8,36 @@ body {
     flex-direction: column;
 
     max-width: 600px;
-    padding: 8px;
-    background-color: #f0e0d8;
-    border-radius: 8px;
+    padding: 16px;
+    background-color: #222;
 }
 
 .formFieldWrapper {
     display: flex;
+    justify-content: space-between;
 
-    font-size: 20pt;
-    background-color: #fad2b4;
+    text-decoration: none;
+    background-color: #333;
+    color: white;
     padding: 4px;
     margin-top: 3px;
     margin-bottom: 3px;
-    border-radius: 8px;
 }
 
-.formInputButton {}
+.formInputButtonWrapper {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.formInputButton {
+    display: flex;
+    align-items: center;
+
+    background-color: #111;
+    text-decoration: none;
+    color: white;
+
+}

@@ -5,11 +5,15 @@
     <title>New Blog</title>
 </head>
 <body>
-    <form action="/blog" method="post">
-        {% csrf_token %}
-    	{{ form }}
-		<p><input type="submit"></p>
-    </form>
+    {% if user.is_authenticated %}
+        <form action="/blog" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <p><input type="submit"></p>
+        </form>
+    {% else %}
+        <div> Вам нужно зарегестрироваться </div>
+    {% endif %}
 
 </body>
 </html>
