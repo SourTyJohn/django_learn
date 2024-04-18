@@ -1,23 +1,17 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/forms_style.css'%}"/>
-</head>
-<body>
-    {% if messages %}
-    <div class="" role="alert">
-        {% for message in messages %}
-        {{ message }}
-        {% endfor %}
-    </div>
-    {% endif %}
-    <p></p>
+{% extends "base.html" %}
+{% block content %}
 
+{% if messages %}
+<div class="" role="alert">
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="formHiddenWrapper">
     <div class="formFullWrapper">
-        <form action="/login" method="post"> {% csrf_token %}
+        <form action="/login/" method="post"> {% csrf_token %}
             {% for field in form %}
             <div class="formFieldWrapper">
                 {{ field.errors }}
@@ -27,6 +21,6 @@
             <div class="formInputButtonWrapper"><input class="formInputButton" type="submit"></div>
         </form>
     </div>
+</div>
 
-</body>
-</html>
+{% endblock %}

@@ -1,19 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>New Blog</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+
+<div class="textFormWrapper">
     {% if user.is_authenticated %}
-        <form action="/blog" method="post">
+        <form action="/blog/" method="post">
             {% csrf_token %}
-            {{ form }}
-            <p><input type="submit"></p>
+            {% for field in form %}
+            <div class="formFieldWrapper">
+                {{ field.errors }}
+
+                {% if 'None' not in field.label_tag %}
+                    {{ field.label_tag }}
+                {% endif %}
+
+                {{ field }}
+            </div>
+            {% endfor %}
+            <div class="formInputButtonWrapper"> <input type="submit"></div>
         </form>
     {% else %}
         <div> Вам нужно зарегестрироваться </div>
     {% endif %}
+</div>
 
-</body>
-</html>
+{% endblock %}

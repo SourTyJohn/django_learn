@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from django.views.decorators.http import require_GET
+from django.views.decorators.http import require_GET, require_POST
 from django.http import HttpRequest
 from . import forms
 from . import models
@@ -9,7 +9,7 @@ from . import models
 
 def index(request: HttpRequest):
     template_kwargs = { 'messages': models.BlogMessage.get_all_posts() }
-    return render(request, "index.html", template_kwargs)
+    return render(request, "blogs_page.html", template_kwargs)
 
 
 def register(request: HttpRequest):
@@ -90,3 +90,10 @@ def add_blog(request: HttpRequest):
 def blogs(request: HttpRequest):
     from_kwargs = {}
     return render(request, 'blogs_page.html', from_kwargs)
+
+
+@require_POST
+def msg_action(request: HttpRequest):
+    if request.user is None:
+        return redirect( register )
+

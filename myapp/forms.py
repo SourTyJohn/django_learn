@@ -31,9 +31,13 @@ class UserFormLogin(forms.Form):
 class BlogForm(forms.ModelForm):
     class Meta:
         model = models.BlogMessage
-        fields = ('text', )
+        fields = ('title', 'text', )
         widgets = {
             'text': forms.Textarea()
+        }
+        labels = {
+            'title': 'Заголовок',
+            'text': 'None'
         }
 
     def __init__(self, *args, **kwargs):

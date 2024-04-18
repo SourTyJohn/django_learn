@@ -1,6 +1,25 @@
-body {
+form {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+}
+
+.textFormWrapper {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 32px;
+    width: 100%;
+}
+
+.textFormWrapper textarea {
+    display: flex;
+    resize: none;
+}
+
+.formHiddenWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .formFullWrapper {
@@ -8,13 +27,16 @@ body {
     flex-direction: column;
 
     max-width: 600px;
+    min-width: 320px;
     padding: 16px;
+    margin-top: 32px;
     background-color: #222;
 }
 
 .formFieldWrapper {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
 
     text-decoration: none;
     background-color: #333;

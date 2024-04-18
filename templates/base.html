@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Greatest Blog of all Time</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main_style.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms_style.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blogs_style.css'%}"/>
+</head>
+
+<body>
+
+    <div id="navbar">
+        <ul class="navbar">
+            <li class="navbar_elem"> <a class="navbar_href" href="/blog"> Добавить Сообщение </a> </li>
+            <li class="navbar_elem"> <a class="navbar_href" href="/login"> Войти </a> </li>
+            <li class="navbar_elem"> <a class="navbar_href" href="/registration"> Зарегестрироваться </a> </li>
+
+            <li class="navbar_elem"><form action="/logout/" method="post">
+                    {% csrf_token %}
+                    <input class="navbar_href" type="submit" value="Выйти"/>
+            </form></li>
+        </ul>
+    </div>
+
+    <div id="content" class="content_wrapper">
+        {% block content %} {% endblock %}
+    </div>
+
+</body>
+</html>

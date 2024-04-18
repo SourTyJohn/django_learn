@@ -14,9 +14,10 @@ class BlogMessage(models.Model):
     create_time = models.DateTimeField(auto_now_add=True)
 
     # form
-    text = models.CharField(
-        verbose_name='Содержание', max_length=128
+    title = models.CharField(
+        verbose_name='Заголовок', max_length=128
     )
+    text = models.CharField(max_length=2048)
 
     def __str__(self):
         return f'<BLOG {self.sender}>'

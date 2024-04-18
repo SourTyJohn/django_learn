@@ -1,3 +1,24 @@
+input {
+    font-size: 1.2rem;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    background-color: #fffafa;
+
+    font-size: 1.2rem;
+}
+
+.content_wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
 .navbar {
     list-style-type: none;
     margin: 0;
@@ -16,28 +37,16 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    background-color: #333;
+}
+
+input.navbar_href {
+    padding: 14px 16px;
+    border: none;
+    background: none;
 }
 
 .navbar_href:hover {
     background-color: #111;
 }
 
-.main_messages_wrapper {
-    display: flex;
-    flex-direction: column;
-
-    padding: 14px 0px 14px 0px;
-}
-
-.message_title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.message_wrapper {
-    display: flex;
-    flex-direction: column;
-    margin-top: 4px;
-    background-color: #f8f4ff;
-}
