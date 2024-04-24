@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="main_messages_wrapper">
+    <div class="message_wrapper">
+
+        <div class="message_author">
+            <div class="message_element"> {{message.sender.username}} </div>
+            <div class="message_element"> {{message.create_time}} </div>
+        </div>
+        <div class="elem_single"> {{message.text|linebreaks}} </div>
+
+        <div class="message_title">
+            <div class="message_element">  </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

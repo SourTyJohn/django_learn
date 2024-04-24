@@ -5,11 +5,15 @@
     {% for msg in messages %}
 
         <div class="message_wrapper">
-            <div class="message_title">
+            <a class="message_title"> {{msg.title}} </a>
+            <hr>
+            <div class="message_author">
                 <div class="message_element"> {{msg.sender.username}} </div>
                 <div class="message_element"> {{msg.create_time}} </div>
             </div>
+            <p></p>
             <div class="message_element"> {{msg.text}} </div>
+            <div class="message_element"><a href="/show_message/{{msg.id}}/">Открыть</a></div>
         </div>
     {% endfor %}
 </div>

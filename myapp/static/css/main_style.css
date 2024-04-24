@@ -41,7 +41,7 @@ body {
 }
 
 input.navbar_href {
-    padding: 14px 16px;
+    padding: 0.9rem 1.0rem;
     border: none;
     background: none;
 }

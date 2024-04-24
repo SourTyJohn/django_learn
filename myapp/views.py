@@ -8,7 +8,11 @@ from . import models
 
 
 def index(request: HttpRequest):
-    template_kwargs = { 'messages': models.BlogMessage.get_all_posts() }
+    return redirect("/blogs_page/1/")
+
+
+def blogs(request: HttpRequest, page_num):
+    template_kwargs = { 'messages': models.BlogMessage.get_page( int(page_num) ) }
     return render(request, "blogs_page.html", template_kwargs)
 
 
@@ -64,7 +68,7 @@ def login_p(request: HttpRequest):
         return redirect( login_p )
 
     login(request, user)
-    return redirect( index )
+    return redirect(blogs)
 
 
 def add_blog(request: HttpRequest):
@@ -81,19 +85,17 @@ def add_blog(request: HttpRequest):
     blog_form = forms.BlogForm(request.POST, sender=request.user)
     if blog_form.is_valid():
         blog_form.save()
-        return redirect( index )
+        return redirect(blogs)
 
     return redirect( add_blog )
 
 
 @require_GET
-def blogs(request: HttpRequest):
-    from_kwargs = {}
-    return render(request, 'blogs_page.html', from_kwargs)
-
-
-@require_POST
-def msg_action(request: HttpRequest):
+def show_message(request: HttpRequest, message_id):
     if request.user is None:
         return redirect( register )
+
+    template_args = { 'message': models.BlogMessage.get_by_id(message_id) }
+    return render(request, "blog_show.html", template_args)
+
 
